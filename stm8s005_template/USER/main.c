@@ -68,8 +68,66 @@ void Delay(uint32_t nCount)
 }
 volatile uint8_t HallSta = 0;
 uint8_t backup = 0;
+
+
+static void aCLK_Config(void)
+{
+    CLK_DeInit();//¼Ä´æÆ÷»Ö¸´Ä¬ÈÏ
+    CLK_HSECmd(ENABLE);//Ê¹ÄÜÍâ²¿Ê±ÖÓ
+    //while(!(CLK->ECKR & (0x01<<1))); //µÈ´ýÊ±ÖÓ¾ÍÐ÷
+    CLK_ClockSwitchCmd(ENABLE);//ÔÊÐíÇÐ»»Ê±ÖÓ
+    /* Configure the Fcpu to DIV1*/
+    CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);//ÅäÖÃCPU·ÖÆµ
+    
+    /* Configure the HSI prescaler to the optimal value */
+    CLK_SYSCLKConfig(CLK_PRESCALER_HSIDIV1);
+    /* Configure the system clock to use HSE clock source and to run at 24Mhz */
+    CLK_ClockSwitchConfig(CLK_SWITCHMODE_MANUAL, CLK_SOURCE_HSE, DISABLE, CLK_CURRENTCLOCKSTATE_DISABLE);
+    /* Output Fcpu on CLK_CCO pin */
+    CLK_CCOConfig(CLK_OUTPUT_CPU);
+    
+
+    while(1)
+    {
+       int i=0;
+       int j=0;
+       int k=0;
+       
+//       GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_OUT_PP_HIGH_FAST);
+//       GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_HIGH_FAST);//,GPIO_MODE_OUT_PP_LOW_FAST
+//          
+
+          
+         GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_OUT_PP_LOW_FAST);//ÁÁ
+         
+         
+         GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_HIGH_FAST);//Ãð
+         for(k=0;k<10;k++)
+         {
+                    for(j=0;j<254;j++)
+                   {
+                     for(i=0;i<254;i++);
+                   }
+           
+         }
+
+           GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_LOW_FAST);//Ãð
+                  for(k=0;k<10;k++)
+         {
+                    for(j=0;j<254;j++)
+                   {
+                     for(i=0;i<254;i++);
+                   }
+           
+         }
+          
+    
+    }
+
+}
 void main(void)
 {
+  aCLK_Config();
   /* Infinite loop */
   CLK_Config();
   

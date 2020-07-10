@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "H:\SiShengShiyanJidi\13_bleBreak_645\stm8s005_template\EWARM\settings\stm8s005_template.Debug.general.xcl" --backend -f "H:\SiShengShiyanJidi\13_bleBreak_645\stm8s005_template\EWARM\settings\stm8s005_template.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\settings\stm8s005_template.Debug.general.xcl" --backend -f "H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\settings\stm8s005_template.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "H:\SiShengShiyanJidi\13_bleBreak_645\stm8s005_template\EWARM\settings\stm8s005_template.Debug.general.xcl" --debug_file=$debugfile --backend -f "H:\SiShengShiyanJidi\13_bleBreak_645\stm8s005_template\EWARM\settings\stm8s005_template.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\settings\stm8s005_template.Debug.general.xcl" --debug_file=$debugfile --backend -f "H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\settings\stm8s005_template.Debug.driver.xcl" 
 }
