@@ -29,7 +29,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm8s.h"
 #include "config.h"
-    
+#include "rtc8025t.h"   
 #include "uart2.h"
 #include "motor.h"
 #include "tim4.h"
@@ -70,6 +70,7 @@ volatile uint8_t HallSta = 0;
 uint8_t backup = 0;
 
 
+//Íâ²¿¾§Õñ°å
 static void aCLK_Config(void)
 {
     CLK_DeInit();//¼Ä´æÆ÷»Ö¸´Ä¬ÈÏ
@@ -102,6 +103,8 @@ static void aCLK_Config(void)
          
          
          GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_HIGH_FAST);//Ãð
+         
+         
          for(k=0;k<10;k++)
          {
                     for(j=0;j<254;j++)
@@ -125,12 +128,44 @@ static void aCLK_Config(void)
     }
 
 }
+
+
+
+
+
+
+void currentTransformerBoard()
+{
+  CLK_Config();
+  Led1_Init();
+  Led2_Init();
+  Uart2_InitSetPar(4800,UART2_WORDLENGTH_9D,UART2_PARITY_EVEN);//4800 8 1 Å¼
+  enableInterrupts();
+  ht7017_init();
+  
+  while(1);
+}
+
+
+
+
+void rtcTest()
+{
+  
+   CLK_Config(); 
+   api_InitOutClockPuls(0);
+
+  while(1);
+}
+
 void main(void)
 {
-  aCLK_Config();
+  rtcTest();
+//   currentTransformerBoard();
+  //aCLK_Config();ÆÁ±ÎÍâ²¿¾§Õñ
   /* Infinite loop */
   CLK_Config();
-  
+ 
   Led1_Init();
 //  Uart2_Init();
   Motor_Init();

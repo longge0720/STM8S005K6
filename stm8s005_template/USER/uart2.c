@@ -38,11 +38,11 @@ void Uart2_InitSetPar(uint32_t BaudRate, UART2_WordLength_TypeDef WordLength, UA
     memset(&data_uart2,0,sizeof(data_uart2));
 }
 //Ä¬ÈÏ³õÊ¼»¯
-void Uart2_Init(void)
+void Uart2_Init(int baud)
 {
     UART2_DeInit();
-    UART2_Init(115200, UART2_WORDLENGTH_8D, 
-                UART2_STOPBITS_1, UART2_PARITY_NO, 
+    UART2_Init(baud, UART2_WORDLENGTH_9D, 
+                UART2_STOPBITS_1, UART2_PARITY_EVEN, 
                 UART2_SYNCMODE_CLOCK_DISABLE, UART2_MODE_TXRX_ENABLE);
     
     UART2_ITConfig(UART2_IT_RXNE_OR,ENABLE);

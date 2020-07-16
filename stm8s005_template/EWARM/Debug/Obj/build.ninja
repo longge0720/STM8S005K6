@@ -43,12 +43,15 @@ build bluetooth.pbi : index bluetooth.xcl
 build device_info.pbi : index device_info.xcl
 build dl645.pbi : index dl645.xcl
 build hall.pbi : index hall.xcl
+build ht7017.pbi : index ht7017.xcl
+build i2c.pbi : index i2c.xcl
 build iwatchdog.pbi : index iwatchdog.xcl
 build key.pbi : index key.xcl
 build led.pbi : index led.xcl
 build lowpower.pbi : index lowpower.xcl
 build main.pbi : index main.xcl
 build motor.pbi : index motor.xcl
+build rtc8025t.pbi : index rtc8025t.xcl
 build spi.pbi : index spi.xcl
 build stm8s_it.pbi : index stm8s_it.xcl
 build tim4.pbi : index tim4.xcl
@@ -56,9 +59,9 @@ build uart2.pbi : index uart2.xcl
 build stm8s005_template_part0.pbi : link stm8s_adc1.pbi stm8s_awu.pbi stm8s_beep.pbi stm8s_clk.pbi stm8s_exti.pbi stm8s_flash.pbi
 build stm8s005_template_part1.pbi : link stm8s_gpio.pbi stm8s_i2c.pbi stm8s_itc.pbi stm8s_iwdg.pbi stm8s_rst.pbi stm8s_spi.pbi
 build stm8s005_template_part2.pbi : link stm8s_tim1.pbi stm8s_tim2.pbi stm8s_tim3.pbi stm8s_tim4.pbi stm8s_uart2.pbi stm8s_wwdg.pbi
-build stm8s005_template_part3.pbi : link adc.pbi bluetooth.pbi device_info.pbi dl645.pbi hall.pbi iwatchdog.pbi
-build stm8s005_template_part4.pbi : link key.pbi led.pbi lowpower.pbi main.pbi motor.pbi spi.pbi
-build stm8s005_template_part5.pbi : link stm8s_it.pbi tim4.pbi uart2.pbi
+build stm8s005_template_part3.pbi : link adc.pbi bluetooth.pbi device_info.pbi dl645.pbi hall.pbi ht7017.pbi
+build stm8s005_template_part4.pbi : link i2c.pbi iwatchdog.pbi key.pbi led.pbi lowpower.pbi main.pbi
+build stm8s005_template_part5.pbi : link motor.pbi rtc8025t.pbi spi.pbi stm8s_it.pbi tim4.pbi uart2.pbi
 build stm8s005_template.pbd : link stm8s005_template_part0.pbi stm8s005_template_part1.pbi stm8s005_template_part2.pbi stm8s005_template_part3.pbi stm8s005_template_part4.pbi stm8s005_template_part5.pbi
 build stm8s005_template.pbw : browsedata stm8s005_template.pbd
 

@@ -1,26 +1,27 @@
-uart2.pbi: H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\USER\uart2.c \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\USER/uart2.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\USER\stm8s_conf.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_adc1.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc/stm8s.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_awu.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_beep.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_clk.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_exti.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_flash.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_gpio.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_i2c.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_itc.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_iwdg.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_rst.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_spi.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_tim1.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_tim2.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_tim3.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_tim4.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_uart2.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_wwdg.h \
+uart2.pbi: \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\USER\uart2.c \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\USER/uart2.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\USER\stm8s_conf.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_adc1.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc/stm8s.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_awu.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_beep.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_clk.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_exti.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_flash.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_gpio.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_i2c.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_itc.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_iwdg.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_rst.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_spi.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_tim1.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_tim2.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_tim3.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_tim4.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_uart2.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc\stm8s_wwdg.h \
   C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\stm8\inc\c\intrinsics.h \
   C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\stm8\inc\c\string.h \
   C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\stm8\inc\c\ycheck.h \
@@ -31,11 +32,11 @@ uart2.pbi: H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\USER\uart2.c \
   C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\stm8\inc\c\xencoding_limits.h \
   C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\stm8\inc\c\DLib_Threads.h \
   C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\stm8\inc\c\ysizet.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\USER/motor.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\USER/key.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\USER/hall.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\USER/motor.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\USER/key.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\USER/hall.h \
   C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\stm8\inc\c\stdio.h \
   C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\stm8\inc\c\ystdio.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\USER/dl645.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\USER/bluetooth.h \
-  H:\SiShengShiyanJidi\STM8S005K6\stm8s005_template\USER/tim4.h
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\USER/dl645.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\USER/bluetooth.h \
+  H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\USER/tim4.h

@@ -2232,6 +2232,12 @@
             <name>$PROJ_DIR$\..\USER\hall.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\USER\ht7017.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\USER\i2c.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\USER\iwatchdog.c</name>
         </file>
         <file>
@@ -2248,6 +2254,9 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\USER\motor.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\USER\rtc8025t.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\USER\spi.c</name>

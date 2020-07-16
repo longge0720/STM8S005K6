@@ -413,7 +413,7 @@ INTERRUPT_HANDLER(I2C_IRQHandler, 19)
  {
    if(UART2_GetITStatus(UART2_IT_RXNE) == SET)//接收区非空
    {
-     if(data_uart2.rec_cnt < 50) //稍后加一个接受中断判断
+     if(data_uart2.rec_cnt < 4) //稍后加一个接受中断判断
      {
        data_uart2.rec[data_uart2.rec_cnt++] = UART2_ReceiveData8();
      }
