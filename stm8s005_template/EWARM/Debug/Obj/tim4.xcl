@@ -1,26 +1,26 @@
-"H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\USER\tim4.c"
+"H:\SiShengShiyanJidi\STM8S005K6_JL\stm8s005_template\USER\tim4.c"
 -std=c99
 -ferror-limit=0
 -fbracket-depth=512
 -MD
 -MF
-H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\Debug\Obj\tim4.pbi.dep
+H:\SiShengShiyanJidi\STM8S005K6_JL\stm8s005_template\EWARM\Debug\Obj\tim4.pbi.dep
 -o
 tim4.pbi
 -I
-H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\USER
+H:\SiShengShiyanJidi\STM8S005K6_JL\stm8s005_template\USER
 -I
-H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\FWLIB\inc
+H:\SiShengShiyanJidi\STM8S005K6_JL\stm8s005_template\EWARM\..\FWLIB\inc
 -I
-H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\EWARM\..\USER
+H:\SiShengShiyanJidi\STM8S005K6_JL\stm8s005_template\EWARM\..\USER
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\stm8\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\stm8\inc\c
 -I
-H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\FWLIB\inc
+H:\SiShengShiyanJidi\STM8S005K6_JL\stm8s005_template\FWLIB\inc
 -I
-H:\SiShengShiyanJidi\STM8S005K6_SHZH\stm8s005_template\USER
+H:\SiShengShiyanJidi\STM8S005K6_JL\stm8s005_template\USER
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

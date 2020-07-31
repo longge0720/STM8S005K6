@@ -1,29 +1,29 @@
 /**
-  ******************************************************************************
-  * @file    Project/main.c 
-  * @author  MCD Application Team
-  * @version V2.3.0
-  * @date    16-June-2017
-  * @brief   Main program body
-   ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */ 
+******************************************************************************
+* @file    Project/main.c 
+* @author  MCD Application Team
+* @version V2.3.0
+* @date    16-June-2017
+* @brief   Main program body
+******************************************************************************
+* @attention
+*
+* <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
+*
+* Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+* You may not use this file except in compliance with the License.
+* You may obtain a copy of the License at:
+*
+*        http://www.st.com/software_license_agreement_liberty_v2
+*
+* Unless required by applicable law or agreed to in writing, software 
+* distributed under the License is distributed on an "AS IS" BASIS, 
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+******************************************************************************
+*/ 
 
 
 /* Includes ------------------------------------------------------------------*/
@@ -41,11 +41,12 @@
 #include "lowpower.h"
 #include "device_info.h"
 #include "bluetooth.h"
+#include "ht7017.h"
 /* Private defines -----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 #define VERSION         "VERSION V1.0\r\n"
-    
+
 extern uint8_t MotorState;
 //电机状态，分合闸状态，开关状态
 static void CLK_Config(void)
@@ -73,77 +74,90 @@ uint8_t backup = 0;
 //外部晶振板
 static void aCLK_Config(void)
 {
-    CLK_DeInit();//寄存器恢复默认
-    CLK_HSECmd(ENABLE);//使能外部时钟
-    //while(!(CLK->ECKR & (0x01<<1))); //等待时钟就绪
-    CLK_ClockSwitchCmd(ENABLE);//允许切换时钟
-    /* Configure the Fcpu to DIV1*/
-    CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);//配置CPU分频
+  CLK_DeInit();//寄存器恢复默认
+  CLK_HSECmd(ENABLE);//使能外部时钟
+  //while(!(CLK->ECKR & (0x01<<1))); //等待时钟就绪
+  CLK_ClockSwitchCmd(ENABLE);//允许切换时钟
+  /* Configure the Fcpu to DIV1*/
+  CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);//配置CPU分频
+  
+  /* Configure the HSI prescaler to the optimal value */
+  CLK_SYSCLKConfig(CLK_PRESCALER_HSIDIV1);
+  /* Configure the system clock to use HSE clock source and to run at 24Mhz */
+  CLK_ClockSwitchConfig(CLK_SWITCHMODE_MANUAL, CLK_SOURCE_HSE, DISABLE, CLK_CURRENTCLOCKSTATE_DISABLE);
+  /* Output Fcpu on CLK_CCO pin */
+  CLK_CCOConfig(CLK_OUTPUT_CPU);
+  
+  
+  while(1)
+  {
+    int i=0;
+    int j=0;
+    int k=0;
     
-    /* Configure the HSI prescaler to the optimal value */
-    CLK_SYSCLKConfig(CLK_PRESCALER_HSIDIV1);
-    /* Configure the system clock to use HSE clock source and to run at 24Mhz */
-    CLK_ClockSwitchConfig(CLK_SWITCHMODE_MANUAL, CLK_SOURCE_HSE, DISABLE, CLK_CURRENTCLOCKSTATE_DISABLE);
-    /* Output Fcpu on CLK_CCO pin */
-    CLK_CCOConfig(CLK_OUTPUT_CPU);
+    //       GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_OUT_PP_HIGH_FAST);
+    //       GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_HIGH_FAST);//,GPIO_MODE_OUT_PP_LOW_FAST
+    //          
     
-
-    while(1)
+    
+    GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_OUT_PP_LOW_FAST);//亮
+    
+    
+    GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_HIGH_FAST);//灭
+    
+    
+    for(k=0;k<10;k++)
     {
-       int i=0;
-       int j=0;
-       int k=0;
-       
-//       GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_OUT_PP_HIGH_FAST);
-//       GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_HIGH_FAST);//,GPIO_MODE_OUT_PP_LOW_FAST
-//          
-
-          
-         GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_OUT_PP_LOW_FAST);//亮
-         
-         
-         GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_HIGH_FAST);//灭
-         
-         
-         for(k=0;k<10;k++)
-         {
-                    for(j=0;j<254;j++)
-                   {
-                     for(i=0;i<254;i++);
-                   }
-           
-         }
-
-           GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_LOW_FAST);//灭
-                  for(k=0;k<10;k++)
-         {
-                    for(j=0;j<254;j++)
-                   {
-                     for(i=0;i<254;i++);
-                   }
-           
-         }
-          
-    
+      for(j=0;j<254;j++)
+      {
+        for(i=0;i<254;i++);
+      }
+      
     }
-
+    
+    GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_LOW_FAST);//灭
+    for(k=0;k<10;k++)
+    {
+      for(j=0;j<254;j++)
+      {
+        for(i=0;i<254;i++);
+      }
+      
+    }
+    
+    
+  }
+  
 }
 
 
 
 
-
+uint8_t beginRcv = 0;
 
 void currentTransformerBoard()
 {
   CLK_Config();
+ 
   Led1_Init();
   Led2_Init();
+  
+  GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_OUT_PP_LOW_FAST);//亮  
+  GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_HIGH_FAST);//灭
   Uart2_InitSetPar(4800,UART2_WORDLENGTH_9D,UART2_PARITY_EVEN);//4800 8 1 偶
   enableInterrupts();
   ht7017_init();
-  
-  while(1);
+
+  while(1)
+  {
+    
+    uint8_t readI2[] = {0x6a,0x07};
+    for(int j=0;j<50;j++){for(int i=0;i<0xffff;i++);}
+    HT7017_WRITE(readI2,sizeof(readI2));
+     
+    beginRcv = 1;for(int j=0;j<50;j++){for(int i=0;i<0xffff;i++);}
+    
+  }
 }
 
 
@@ -152,39 +166,40 @@ void currentTransformerBoard()
 void rtcTest()
 {
   
-   CLK_Config(); 
-   api_InitOutClockPuls(0);
-
+  CLK_Config(); 
+  api_InitOutClockPuls(0);
+  
   while(1);
 }
 
 void main(void)
 {
-  rtcTest();
-//   currentTransformerBoard();
+    //while(1);
+  currentTransformerBoard();
+  //   currentTransformerBoard();
   //aCLK_Config();屏蔽外部晶振
   /* Infinite loop */
-  CLK_Config();
- 
+//  CLK_Config();
+ // while(1);
   Led1_Init();
-//  Uart2_Init();
+  //  Uart2_Init();
   Motor_Init();
   TIM4_Config();
   Key_Init();
   Hall_Init();
-    
-//  ENABLE_SWITCH_POWER;
+  
+  //  ENABLE_SWITCH_POWER;
   
   ReadDeviceInfo();
   
-//  IWDG_Config();
+  //  IWDG_Config();
   enableInterrupts();
-
+  
   BlueTooth_Init();
   
-//  printf("uart2 init abcd\r\n");
-//  printf("system version %#lX,reset cnt %d ,devid %#02X %#02X %#02X %#02X %#02X %#02X\r\n",dev_info.version,dev_info.cnt,
-//       dev_info.dev_id[0],dev_info.dev_id[1],dev_info.dev_id[2],dev_info.dev_id[3],dev_info.dev_id[4],dev_info.dev_id[5]);
+  //  printf("uart2 init abcd\r\n");
+  //  printf("system version %#lX,reset cnt %d ,devid %#02X %#02X %#02X %#02X %#02X %#02X\r\n",dev_info.version,dev_info.cnt,
+  //       dev_info.dev_id[0],dev_info.dev_id[1],dev_info.dev_id[2],dev_info.dev_id[3],dev_info.dev_id[4],dev_info.dev_id[5]);
   
   for(int i=0;i<8;i++)//上电延时4s,规约要求
   {
@@ -201,10 +216,10 @@ void main(void)
     {
       switch(HallSta)
       {
-        case 0:Uart2_SendStr("HALL: U8 L  U9 L\r\n");break;
-        case 1:Uart2_SendStr("HALL: U8 L  U9 H\r\n");break;
-        case 2:Uart2_SendStr("HALL: U8 H  U9 L\r\n");break;
-        default:break;
+      case 0:Uart2_SendStr("HALL: U8 L  U9 L\r\n");break;
+      case 1:Uart2_SendStr("HALL: U8 L  U9 H\r\n");break;
+      case 2:Uart2_SendStr("HALL: U8 H  U9 L\r\n");break;
+      default:break;
       }
       backup = HallSta;
     }
@@ -213,7 +228,7 @@ void main(void)
     Key_Driver();
     Uart_Driver();
     Motor_Driver();
-   
+    
 #if 0
     ENABLE_SWITCH_POWER;
     Delay_MS(5000);
@@ -232,9 +247,9 @@ void main(void)
       Uart_Driver();
       Motor_Driver();
     }
-
+    
 #endif
-//    IWDG_ReloadCounter();//喂狗
+    //    IWDG_ReloadCounter();//喂狗
   }
   
 }
@@ -244,17 +259,17 @@ void main(void)
 #ifdef USE_FULL_ASSERT
 
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *   where the assert_param error has occurred.
-  * @param file: pointer to the source file name
-  * @param line: assert_param error line source number
-  * @retval : None
-  */
+* @brief  Reports the name of the source file and the source line number
+*   where the assert_param error has occurred.
+* @param file: pointer to the source file name
+* @param line: assert_param error line source number
+* @retval : None
+*/
 void assert_failed(u8* file, u32 line)
 { 
   /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-
+  ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+  
   /* Infinite loop */
   printf("Wrong parameters value: file %s on line %d\r\n", file, line);
   while (1)

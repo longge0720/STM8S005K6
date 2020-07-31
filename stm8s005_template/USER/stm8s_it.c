@@ -403,7 +403,11 @@ INTERRUPT_HANDLER(I2C_IRQHandler, 19)
        it is recommended to set a breakpoint on the following instruction.
     */
  }
-
+volatile uint8_t recData[10] = {0};  
+volatile uint8_t recData1[128] = {0}; 
+volatile uint8_t rec_cnt = 0;
+extern uint8_t beginRcv;
+int ii = 0;
 /**
   * @brief UART2 RX interrupt routine.
   * @param  None
@@ -413,10 +417,39 @@ INTERRUPT_HANDLER(I2C_IRQHandler, 19)
  {
    if(UART2_GetITStatus(UART2_IT_RXNE) == SET)//接收区非空
    {
-     if(data_uart2.rec_cnt < 4) //稍后加一个接受中断判断
+     if(beginRcv)
      {
-       data_uart2.rec[data_uart2.rec_cnt++] = UART2_ReceiveData8();
+          if(rec_cnt < 4) //稍后加一个接受中断判断
+         {
+           recData[rec_cnt++] = UART2_ReceiveData8();
+         }
+         else if(rec_cnt == 4)
+         {
+           unsigned int value = (recData[1]<<8) + (recData[2]);
+           if( value > 0x300 )//0x2 xx
+           {
+
+                GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_LOW_FAST);//亮  
+                          memset(recData,0,sizeof(recData));
+           }
+           else
+           { 
+                GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_OUT_PP_HIGH_FAST);//灭  
+           }
+           
+           rec_cnt =0;
+             
+           memset(recData,0,sizeof(recData));
+         }
+     
      }
+      else
+      {
+        //recData1[ii++] = UART2_ReceiveData8();
+         rec_cnt =0;
+               memset(recData,0,sizeof(recData));
+      }
+     UART2_ReceiveData8();
      UART2_ClearITPendingBit(UART2_IT_RXNE);
    }
    

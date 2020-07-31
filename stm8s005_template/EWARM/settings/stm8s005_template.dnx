@@ -16,7 +16,7 @@
         <ShowSource>1</ShowSource>
     </Trace1>
     <DebugChecksum>
-        <Checksum>225466669</Checksum>
+        <Checksum>1418261659</Checksum>
     </DebugChecksum>
     <CodeCoverage>
         <Enabled>0</Enabled>
@@ -76,8 +76,7 @@
         <MultiCoreRunAll>1</MultiCoreRunAll>
     </Simulator>
     <struct_types>
-        <Fmt0>Device_Typedef-version	4	0</Fmt0>
-        <Fmt1>UartData_Typedef-rec_cnt	3	0</Fmt1>
+        <Fmt0>UartData_Typedef-rec_cnt	3	0</Fmt0>
     </struct_types>
     <watch_formats>
         <Fmt0>{W}1:result	4	0</Fmt0>
@@ -97,10 +96,12 @@
         <Category>_ 0</Category>
     </LogFile>
     <Breakpoints>
-        <Bp0>_ "STD_CODE" "{$PROJ_DIR$\..\USER\stm8s_it.c}.414.4" 1 0 0 0 "" 0 ""</Bp0>
-        <Bp1>_ "STD_CODE" "{$PROJ_DIR$\..\USER\stm8s_it.c}.418.8" 1 0 0 0 "" 0 ""</Bp1>
-        <Bp2>_ "STD_CODE" "{$PROJ_DIR$\..\USER\stm8s_it.c}.425.6" 1 0 0 0 "" 0 ""</Bp2>
-        <Count>3</Count>
+        <Bp0>_ "STD_CODE" "{$PROJ_DIR$\..\USER}.288.3" 0 0 0 0 "" 0 ""</Bp0>
+        <Bp1>_ "STD_CODE" "{$PROJ_DIR$\..\USER}.418.8" 0 0 0 0 "" 0 ""</Bp1>
+        <Bp2>_ "STD_CODE" "{$PROJ_DIR$\..\USER}.418.1" 0 0 0 0 "" 0 ""</Bp2>
+        <Bp3>_ "STD_CODE" "{$PROJ_DIR$\..\USER}.289.1" 0 0 0 0 "" 0 ""</Bp3>
+        <Bp4>_ "STD_CODE" "{$PROJ_DIR$\..\USER}.431.2" 0 0 0 0 "" 0 ""</Bp4>
+        <Count>5</Count>
     </Breakpoints>
     <Aliases>
         <Count>0</Count>

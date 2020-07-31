@@ -9,7 +9,7 @@
 #define HT7017_WRITE_BIT        (0x01 << 7)
 #define HT7017_ACK              0x54
 #define HT7017_NAK              0x63
-#define HT7017_WRITE            Uart2_SendStrLen
+
 
 //extern UartRec_Typedef uart2Rec;
 //extern UartData_Typedef data_uart2;
@@ -202,44 +202,45 @@ int ht7017_ReadReg(uint8_t reg,uint32_t *dat)
 //  BaseType_t xReturn = pdPASS;
   uint8_t cs = 0;
   
-  buf[0] = 0x6a;
+//  buf[0] = 0x07;
   buf[1] = (reg & HT7017_READ_BIT);
+  buf[1] = reg;
   HT7017_WRITE(buf,2);//在这里发送
 //  vTaskDelay(30);
   //接收部分绑定FreeRTOS，使用二值信号量实现
   //xReturn = xSemaphoreTake(xHt7017Rec_Semphr,100);//串口返回值等待50个tick
   //if(xReturn == pdPASS)         //如果接收到数据
-  {
-    if(data_uart2.rec_cnt == 4)
-    {
-      for(int i=0;i<4;i++)
-      {
-        buf[i+2] = data_uart2.rec[i];
-      }
-      cs = ht7017_checkCS(buf,5);//计算除最后一位校验和
-      if(cs == buf[5])//校验值正确
-      {
-        tmp = buf[2];
-        tmp = (tmp<<8) | buf[3];
-        tmp = (tmp<<8) | buf[4];
-        *dat = tmp;
-        ret = SUCCESS;
-//        xReturn = pdPASS;
-        //DBG("ht read reg %x succ val %d val %#X \r\n",reg,tmp,tmp);
-        //DBG("OK\r\n");
-      }
-      
-    }
-    else                //如果接收到数据个数不正确
-    {
-      ret = ERROR;
-//      xReturn = pdFAIL;
-      //DBG("ht err %d num \r\n",uart1Rec.recNum);
-//      DBG("ENUM %d\r\n",uart1Rec.recNum);
-    }
-    data_uart2.rec_cnt = 0;
-    memset(data_uart2.rec,0,sizeof(data_uart2.rec));
-  }
+
+//    if(data_uart2.rec_cnt == 4)
+//    {
+//      for(int i=0;i<4;i++)
+//      {
+//        buf[i+2] = data_uart2.rec[i];
+//      }
+//      cs = ht7017_checkCS(buf,5);//计算除最后一位校验和
+//      if(cs == buf[5])//校验值正确
+//      {
+//        tmp = buf[2];
+//        tmp = (tmp<<8) | buf[3];
+//        tmp = (tmp<<8) | buf[4];
+//        *dat = tmp;
+//        ret = SUCCESS;
+////        xReturn = pdPASS;
+//        //DBG("ht read reg %x succ val %d val %#X \r\n",reg,tmp,tmp);
+//        //DBG("OK\r\n");
+//      }
+//      
+//    }
+//    else                //如果接收到数据个数不正确
+//    {
+//      ret = ERROR;
+////      xReturn = pdFAIL;
+//      //DBG("ht err %d num \r\n",uart1Rec.recNum);
+////      DBG("ENUM %d\r\n",uart1Rec.recNum);
+//    }
+//    data_uart2.rec_cnt = 0;
+//    memset(data_uart2.rec,0,sizeof(data_uart2.rec));
+
   /*
   else
   {
@@ -283,22 +284,25 @@ int ht7017_ReadReg(uint8_t reg,uint32_t *dat)
 void ht7017_init(void)
 {
   uint32_t tmp = 0;
-  
-  
-  ht7017_ReadReg(0x1b,&tmp);
-  for(int i=0;i<0xffff;i++);
-  ht7017_ReadReg(0x1c,&tmp);
-  for(int i=0;i<0xffff;i++);
-  ht7017_ReadReg(0x02,&tmp);
-  for(int i=0;i<0xffff;i++);
-  ht7017_ReadReg(0x30,&tmp);
-  for(int i=0;i<0xffff;i++);
-  ht7017_ReadReg(0x00,&tmp);
-  for(int i=0;i<0xffff;i++);
-  ht7017_ReadReg(0x30,&tmp);
-  for(int i=0;i<0xffff;i++);
-  ht7017_WriteReg(0x30,tmp);
-  for(int i=0;i<0xffff;i++);
+  uint8_t writeProtect[] = {0x6a,0xb2,0x00,0xbc,0x27};
+  HT7017_WRITE(writeProtect,sizeof(writeProtect));
+  for(int j=0;j<50;j++){for(int i=0;i<0xffff;i++);}
+    HT7017_WRITE(writeProtect,sizeof(writeProtect));
+  for(int j=0;j<50;j++){for(int i=0;i<0xffff;i++);}
+    HT7017_WRITE(writeProtect,sizeof(writeProtect));
+  for(int j=0;j<50;j++){for(int i=0;i<0xffff;i++);}
+    HT7017_WRITE(writeProtect,sizeof(writeProtect));
+  for(int j=0;j<50;j++){for(int i=0;i<0xffff;i++);}
+
+  uint8_t enableADC[] = {0x6a,0xC3,0x00,0x07,0xCB};
+  HT7017_WRITE(enableADC,sizeof(enableADC));
+for(int j=0;j<50;j++){for(int i=0;i<0xffff;i++);}
+  HT7017_WRITE(enableADC,sizeof(enableADC));
+for(int j=0;j<50;j++){for(int i=0;i<0xffff;i++);}
+  HT7017_WRITE(enableADC,sizeof(enableADC));
+for(int j=0;j<50;j++){for(int i=0;i<0xffff;i++);}
+  HT7017_WRITE(enableADC,sizeof(enableADC));
+for(int j=0;j<50;j++){for(int i=0;i<0xffff;i++);}
 }
 
 
